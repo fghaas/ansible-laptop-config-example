@@ -1,0 +1,21 @@
+# -*- yaml -*-
+---
+repositories: []
+
+packages:
+  - name: aptitude
+    state: absent
+  - name: openssh-server
+    state: absent
+  - name: lxd
+    state: absent
+  - name: snapd
+    state: absent
+  - name: open-iscsi
+    state: absent
+
+package_state: latest
+
+package_upgrade: full
+
+apt_proxy: http://10.0.3.1:3142

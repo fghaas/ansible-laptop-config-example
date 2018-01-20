@@ -1,0 +1,20 @@
+# -*- yaml -*-
+---
+packages:
+  - name: dmz-cursor-theme
+  - name: fonts-cantarell
+  - name: fonts-hack-otf
+  - name: fonts-symbola
+  - name: libcanberra-gtk-module
+  - name: libreoffice
+  - name: libreoffice-gtk
+  - name: light-themes
+  - name: ttf-mscorefonts-installer
+  - name: ttf-ubuntu-font-family
+  - name: ubuntu-mono
+
+package_state: latest
+
+package_upgrade: full
+
+apt_proxy: http://10.0.3.1:3142

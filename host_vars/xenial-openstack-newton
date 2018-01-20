@@ -1,0 +1,26 @@
+# -*- yaml -*-
+repository_keys:
+  - id: 5EDB1B62EC4926EA
+
+repositories:
+  - repo: "deb http://ubuntu-cloud.archive.canonical.com/ubuntu {{ ansible_distribution_release }}-updates/newton main"
+
+packages:
+  - name: python-novaclient
+    state: latest
+  - name: python-glanceclient
+    state: latest
+  - name: python-keystoneclient
+    state: latest
+  - name: python-designateclient
+    state: latest
+  - name: python-heatclient
+    state: latest
+  - name: python-openstackclient
+    state: latest
+  - name: python-swiftclient
+    state: latest
+  - name: openssh-server
+    state: absent
+
+apt_proxy: http://10.0.3.1:3142

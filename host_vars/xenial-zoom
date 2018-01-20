@@ -1,0 +1,41 @@
+# -*- yaml -*-
+---
+packages:
+  - name: openssh-server
+    state: absent
+  - name: libasound2
+  - name: libegl1-mesa
+  - name: libfontconfig1
+  - name: libgl1-mesa-glx
+  - name: libglib2.0-0
+  - name: libnss3
+  - name: libpulse0
+  - name: libqt5positioning5
+  - name: libqt5printsupport5
+  - name: libqt5qml5
+  - name: libqt5quick5
+  - name: libqt5script5
+  - name: libqt5widgets5
+  - name: libsm6
+  - name: libsqlite3-0
+  - name: libxcb-image0
+  - name: libxcb-keysyms1
+  - name: libxcb-randr0
+  - name: libxcb-shape0
+  - name: libxcb-shm0
+  - name: libxcb-xfixes0
+  - name: libxcb-xtest0
+  - name: libxcomposite1
+  - name: libxcursor1
+  - name: libxi6
+  - name: libxrandr2
+  - name: libxrender1
+  - name: libxslt1.1
+  - name: libxss1
+  - name: libxtst6
+
+package_state: latest
+
+package_upgrade: full
+
+apt_proxy: http://10.0.3.1:3142

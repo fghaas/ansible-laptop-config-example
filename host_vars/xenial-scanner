@@ -1,0 +1,26 @@
+# -*- yaml -*-
+---
+repository_keys:
+  - id: 7CC3E840
+  - id: 09BAC46D
+
+repositories:
+  - repo: 'deb http://www.bchemnet.com/suldr debian extra'
+
+packages:
+  - name: aptitude
+    state: absent
+  - name: openssh-server
+    state: absent
+  - name: libasound2
+  - name: libasound2-plugins
+  - name: simple-scan
+  - name: suld-driver2-1.00.36
+  - name: sane-utils
+  - name: usbutils
+
+package_state: latest
+
+package_upgrade: full
+
+apt_proxy: http://10.0.3.1:3142

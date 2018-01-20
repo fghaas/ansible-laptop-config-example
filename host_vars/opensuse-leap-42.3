@@ -1,0 +1,18 @@
+# -*- yaml -*-
+---
+repositories:
+  - repo: http://download.opensuse.org/distribution/leap/{{ ansible_distribution_version }}/repo/oss/
+    name: repo-oss
+  - repo: http://download.opensuse.org/update/leap/{{ ansible_distribution_version }}/oss/
+    name: repo-update
+
+packages:
+  - name: python
+  - name: python-xml
+  - name: sudo
+  - name: openssh
+    state: absent
+
+package_state: latest
+
+package_upgrade: full

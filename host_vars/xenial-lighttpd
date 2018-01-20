@@ -1,0 +1,13 @@
+# -*- yaml -*-
+---
+packages:
+  - name: lighttpd
+  - name: aptitude
+  - name: openssh-server
+    state: absent
+    
+package_state: latest
+
+package_upgrade: full
+
+apt_proxy: http://10.0.3.1:3142

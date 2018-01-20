@@ -1,0 +1,20 @@
+# -*- yaml -*-
+---
+packages:
+  - name: openssh-server
+    state: absent
+  - name: dbus-x11
+  - name: firefox
+  - name: fonts-symbola
+  - name: gstreamer1.0-libav
+  - name: gstreamer1.0-plugins-good
+  - name: libasound2-plugins
+  - name: libcanberra-gtk3-module
+  - name: ttf-ubuntu-font-family
+  - name: icedtea-netx
+
+package_state: latest
+
+package_upgrade: full
+
+apt_proxy: http://10.0.3.1:3142
