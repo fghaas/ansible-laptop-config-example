@@ -1,0 +1,124 @@
+# -*- yaml -*-
+---
+lxc_containers:
+
+  ### Unprivileged containers #########################################
+
+  - name: trusty
+    backing_store: btrfs
+    template: ubuntu-cloud
+    template_options: '--release trusty'
+    container_config:
+      - lxc.mount.auto = proc sys cgroup
+      - lxc.mount.entry = /home home none rbind 0 0
+      - lxc.id_map = u 0 100000 1000
+      - lxc.id_map = g 0 100000 1000
+      - lxc.id_map = u 1000 1000 1
+      - lxc.id_map = g 1000 1000 1
+      - lxc.id_map = u 1001 101001 64535
+      - lxc.id_map = g 1001 101001 64535
+    state: stopped
+    privileged: false
+
+  - name: xenial
+    backing_store: btrfs
+    template: ubuntu-cloud
+    template_options: '--release xenial --tarball https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-root.tar.xz'
+    container_config:
+      - lxc.mount.auto = proc sys cgroup
+      - lxc.mount.entry = /home home none rbind 0 0
+      - lxc.id_map = u 0 100000 1000
+      - lxc.id_map = g 0 100000 1000
+      - lxc.id_map = u 1000 1000 1
+      - lxc.id_map = g 1000 1000 1
+      - lxc.id_map = u 1001 101001 64535
+      - lxc.id_map = g 1001 101001 64535
+    state: stopped
+    privileged: false
+
+  - name: xenial-lighttpd
+    backing_store: btrfs
+    clone_source: xenial
+    state: stopped
+    privileged: false
+
+  - name: xenial-openstack-newton
+    backing_store: btrfs
+    clone_source: xenial
+    state: stopped
+    privileged: false
+
+  - name: xenial-openstack-pike
+    backing_store: btrfs
+    clone_source: xenial
+    state: stopped
+    privileged: false
+
+  - name: xenial-sass
+    backing_store: btrfs
+    clone_source: xenial
+    state: stopped
+    privileged: false
+
+  - name: xenial-libreoffice
+    backing_store: btrfs
+    clone_source: xenial
+    clone_snapshot: true
+    container_config:
+      - lxc.mount.entry = /dev/dri dev/dri none rbind,optional,create=dir
+      - lxc.mount.entry = /tmp/.X11-unix tmp/.X11-unix none rbind,ro,optional,create=dir
+    state: stopped
+    privileged: false
+
+  - name: xenial-scanner
+    backing_store: btrfs
+    clone_source: xenial
+    clone_snapshot: true
+    container_config:
+      - lxc.mount.entry = /dev/dri dev/dri none rbind,optional,create=dir
+      - lxc.mount.entry = /tmp/.X11-unix tmp/.X11-unix none rbind,ro,optional,create=dir
+      - lxc.mount.entry = /dev/bus/usb dev/bus/usb none rbind,optional,create=dir
+    state: stopped
+    privileged: false
+
+  - name: xenial-firefox-java
+    backing_store: btrfs
+    clone_source: xenial
+    container_config:
+      - lxc.mount.entry = /dev/dri dev/dri none rbind,optional,create=dir
+      - lxc.mount.entry = /dev/snd dev/snd none rbind,optional,create=dir
+      - lxc.mount.entry = /tmp/.X11-unix tmp/.X11-unix none rbind,ro,optional,create=dir
+    state: stopped
+    privileged: false
+
+  - name: xenial-zoom
+    backing_store: btrfs
+    clone_source: xenial
+    container_config:
+      - lxc.mount.entry = /dev/dri dev/dri none rbind,optional,create=dir
+      - lxc.mount.entry = /tmp/.X11-unix tmp/.X11-unix none rbind,ro,optional,create=dir
+      - lxc.mount.entry = /dev/video1 dev/video1 none rbind,optional,create=file
+    state: stopped
+    privileged: false
+
+  ### Privileged containers ###########################################
+
+  - name: xenial
+    backing_store: btrfs
+    template: ubuntu-cloud
+    template_options: '--release xenial --tarball https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-root.tar.xz'
+    container_config:
+      - lxc.mount.auto = proc sys cgroup
+    state: stopped
+    privileged: true
+
+  - name: xenial-cups
+    backing_store: btrfs
+    clone_source: xenial
+    clone_snapshot: true
+    container_config:
+      - lxc.network.type = none
+      - lxc.mount.entry = /dev/bus/usb dev/bus/usb none rbind,optional,create=dir
+      - lxc.cgroup.devices.allow = c 189:* rw
+    state: started
+    privileged: true
